@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.dgut.member.entity">
+	<class name="ApplyLover" table="lo_apply_lover">
+		<meta attribute="sync-DAO">false</meta>
+		<!-- <cache usage="read-write"/> -->
+		<id name="id" type="integer" column="id"><generator class="identity"/></id>
+		
+		<property name="apply_reason" column="apply_reason" type="string"  length="20" not-null="false"/>
+	
+		<!--<property name="handle_flag" column="handle_flag" type="integer" not-null="true" length="4"/>-->
+
+		<property name="handle_flag" column="handle_flag" type="integer" length="4"/>
+		<property name="applyTime" column="apply_time" type="timestamp"/>
+		<property name="ReplyTime" column="reply_time" type="timestamp"/>
+		
+
+		<many-to-one name="publisher" column="publisher_id" class="com.dgut.member.entity.Member" unique="true"/>
+		<many-to-one name="receiver" column="receiver_id" class="com.dgut.member.entity.Member" unique="true"/>
+	
+		
+	</class>
+</hibernate-mapping>

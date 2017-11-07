@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.dgut.member.entity">
+	<class name="Province" table="lo_province">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write"/>
+		<id name="id" type="java.lang.Integer" column="province_id"><generator class="identity"/></id>
+		<property name="name" column="province_name" type="string" not-null="true" length="12"/>
+		
+		<property name="priority" column="priority" type="java.lang.Integer" not-null="true"  length="11"/>
+		<set name="citys" inverse="true" cascade="all">
+	      <key column="province_id"></key>
+	      <one-to-many class="com.dgut.member.entity.City"/>
+		</set>
+		   <!--  <many-to-one name="customer" column="CUSTOMER_ID" cascade="save-update"  
+         class="com.lwp.hibernate.Model.Customer" not-null="true"/>   -->
+	</class>
+</hibernate-mapping>

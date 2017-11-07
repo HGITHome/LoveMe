@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.dgut.member.entity">
+	<class name="MemberInfo" table="lo_member_info">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write" />
+		<id name="id" type="integer" column="info_id">
+			<generator class="identity" />
+		</id>
+		<many-to-one name="member" cascade="all" class="com.dgut.member.entity.Member" column="user_id" unique="true"></many-to-one>
+		
+		<property name="nickname" column="nickname" type="string" not-null="false" length="100" />
+		<property name="realname" column="realname" type="string" not-null="false" length="100" />
+		<property name="gender" column="gender" type="integer" not-null="false" length="4"/>
+		<property name="age" column="age" type="integer" not-null="false" length="4" />
+		<property name="birthday" column="birthday" type="date" not-null="false" />
+		<property name="constellation" column="constellation" type="string" not-null="false" length="100" />
+		<property name="autograph" column="autograph" type="string" not-null="false" length="100" />
+		<property name="wechat" column="wechat" type="string" not-null="false" length="100" />
+		<property name="thumbs_up" column="thumbs_up" type="integer" not-null="false" length="50" />
+		<property name="labels" column="labels" type="string" not-null="false" length="50" />
+		<property name="label_others" column="label_others" type="string" not-null="false" length="50" />
+		<property name="sports" column="sports" type="string" not-null="false" length="50" />
+		<property name="sport_others" column="sport_others" type="string" not-null="false" length="100" />
+		<property name="music" column="music" type="string" not-null="false" length="50" />
+		<property name="music_others" column="music_others" type="string" not-null="false" length="100" />
+		<property name="foods" column="foods" type="string" not-null="false" length="50" />
+		<property name="food_others" column="food_others" type="string" not-null="false" length="50" />
+		<property name="films" column="films" type="string" not-null="false" length="50" />
+		<property name="film_others" column="film_others" type="string" not-null="false" length="50" />
+
+		<property name="books" column="books" type="string" not-null="false" length="50" />
+		<property name="book_others" column="book_others" type="string" not-null="false" length="100" />
+		<property name="travels" column="travels" type="string" not-null="false" length="50" />
+		<property name="travel_others" column="travel_others" type="string" not-null="false" length="100" />
+		<property name="photoPath" column="imgPath" type="string" not-null="false" length="200" />
+		<property name="miniPhotoPath" column="miniImg" type="string" not-null="false" length="200" />
+		<property name="pair_id" column="pair_id" type="integer" not-null="false" length="11" />
+		
+		<many-to-one name="city" column="city_id" cascade="save-update"></many-to-one>
+		<many-to-one name="major" column="major_id" cascade="save-update"></many-to-one>
+		<list name="pictures" inverse="false" cascade="all" table="lo_life_pictures">
+		  <key column="memberInfo_id" />
+		  <list-index column="index_" />
+		  <one-to-many class="com.dgut.member.entity.LifePicture"/>
+		</list>
+		<!-- <set name="records" cascade="all" inverse="true">
+			<key column="old_id"></key>
+			<one-to-many class="Record" />
+		</set> -->
+
+	
+	</class>
+</hibernate-mapping>

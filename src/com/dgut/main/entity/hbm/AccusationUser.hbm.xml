@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.dgut.main.entity">
+	<class name="AccusationUser" table="lo_accusation_user">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write"/>
+		<id name="id" type="integer" column="id"><generator class="identity"/></id>
+		<property name="report_content" column="report_content" type="string" not-null="true" length="100"/>
+		<property name="report_time" column="report_time" type="timestamp" not-null="true" length="19" />
+		<property name="handle_flag" column="handle_flag" type="integer" not-null="true" length="10"/>
+		<property name="reply_time" column="reply_time" type="timestamp" not-null="false" length="19" />
+		<property name="reply_content" column="reply_content" type="string" not-null="false" length="100"/>
+		<many-to-one name="reporter" column="reporter_id" class="com.dgut.member.entity.Member" not-null="true" />
+		<many-to-one name="informant" column="informant_id" class="com.dgut.member.entity.Member" not-null="true" />
+		<many-to-one name="acType" column="type_id" class="com.dgut.main.entity.AccusationType" not-null="true" />
+		<many-to-one name="admin" column="respondent_id" class="com.dgut.main.entity.Admin" not-null="false" />
+		<list name="acPictures">
+		   <key column="accusation_user_id" />
+		   <list-index column="user_index" />
+		   <one-to-many class="com.dgut.main.entity.AccusationPicture"/>
+		</list>
+	</class>
+</hibernate-mapping>

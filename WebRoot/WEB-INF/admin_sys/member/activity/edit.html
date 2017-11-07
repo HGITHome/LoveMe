@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+Version: 4.5.5
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Dribbble: www.dribbble.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+<head>
+<meta charset="utf-8" />
+<title>${title!""}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+<!-- BEGIN GLOBAL MANDATORY STYLES -->
+<#include "/admin_sys/head.html"/>
+<link href="${base}/res/assets/pages/css/invoice-2.min.css"
+	rel="stylesheet" type="text/css" />
+       <!--  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" /> -->
+        <link href="${base}/res/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
+        <link href="${base}/res/assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="${base}/res/assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" /> 
+        <link href="${base}/res/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+</head>
+<!-- END HEAD -->
+<body
+	class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-md">
+	<!-- BEGIN HEADER -->
+	<#include "/admin_sys/top.html"/>
+	<!-- END HEADER -->
+	<!-- BEGIN HEADER & CONTENT DIVIDER -->
+	<div class="clearfix"></div>
+	<!-- END HEADER & CONTENT DIVIDER -->
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<!-- BEGIN SIDEBAR -->
+			
+			<#assign tb_17=true />
+			<#assign tb_17_ul=true  />
+			<#assign tb_17_li_1=true />
+			<#assign tb_17_li_1=true />
+			<#assign tb_17_arrow=true />
+		<#include "/admin_sys/left.html"/>
+		<!-- END SIDEBAR -->
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+	<!-- BEGIN CONTENT BODY -->
+	<div style="min-height:1022px" class="page-content">
+		<!-- page bar start -->
+		<div class="page-bar">
+
+			<ul class="page-breadcrumb">
+				<li><a href="v_plan.do">活动管理</a> <i class="fa fa-angle-right"></i>
+				</li>
+				<li><span>策划活动</span>
+				</li>
+			</ul>
+		</div>
+		<!-- page bar end-->
+		<div class="row">
+
+			<div class="col-md-12 ">
+				<!-- BEGIN Portlet PORTLET-->
+				<div class="portlet box purple ">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="fa fa-gift"></i> 活动 </div>
+                                    <div class="tools">
+                            <form method="post" action="v_list.do">
+                                <div class="col-md-6">
+                                    <button type="submit"
+                                            class="dt-button buttons-print btn white  btn-outline">
+                                        <i class="fa fa-check"></i> 返回
+
+                                    </button>
+                                </div>
+
+                            </form>
+                          </div>
+                      </div>
+                              
+                                <div class="portlet-body form">
+                                    <form class="form-horizontal" method="post" action="v_update.do" id="edit_activity">
+                                     <div class="form-body">
+                                    <div class="alert alert-danger display-hide">
+                                        <button class="close" data-close="alert"></button>
+                                                                                                               请仔细检查输入的活动信息！
+                                    </div>
+                                    <#if errors??>
+                                        <div class="alert alert-danger" role="alert">
+                                            <button class="close" data-close="alert"></button>
+                                            <#list errors as error> ${error}<br/></#list>
+                                        </div>
+                                    </#if>
+                                </div>
+                                    <div class="col-md-8 col-sm-8">
+                                       <div class="todo-taskbody-user">
+                                       <h4><span class="todo-username pull-left">管理者:</span></h4>
+                                       <h4><span class="todo-username pull-left">${admin.username}</span></h4>
+                                       </div>
+                                     </div>
+                                     <br/>
+                                        <div class="form-body">
+                                           <div class="form-group form-md-line-input">
+                                             <input type="hidden" name="id" value="${activity.id}">
+                                                <h4><label class="col-md-3 control-label" for="form_control_1">活动名称:</label></h4>
+                                                <div class="col-md-9">
+                                                    <input type="text" name="queryActivityName" id="queryActivityName" value="${activity.activityName!}" class="form-control required" placeholder="" style="font-size: 20px;">
+                                                   <div id="form_name_error"></div>
+                                                    <div class="form-control-focus"> </div>
+                                                    <span class="help-block"></span>
+                                                </div>
+                                            </div>
+                                           <div class="form-group form-md-line-input">
+                                                <h4><label class="col-md-3 control-label" for="form_control_1">活动地点:</label></h4>
+                                                <div class="col-md-9">
+                                                    <input type="text" name="activityAddress" id="queryAddress" value="${activity.activityAddress!}" class="form-control required" placeholder="" style="font-size: 20px;">
+                                                    <div id="form_address_error"></div>
+                                                    <div class="form-control-focus"> </div>
+                                                    <span class="help-block"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <h4><label class="control-label col-md-3">完成时间(天):</label></h4>
+                                                <div class="col-md-4">
+                                                    <input id="touchspin_6" type="text" value="1" name="completion_time"> </div>
+                                            </div>
+                                        </div>
+                                        
+                                    
+                            <div class="portlet box purple ">
+                               <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="fa fa-gift"></i> 活动具体内容 </div>
+                                  <!--   <div class="tools">
+                                        <a href="" class="collapse"> </a>
+                                        <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                        <a href="" class="reload"> </a>
+                                        <a href="" class="remove"> </a>
+                                    </div> -->
+                                 </div>
+                               </div>
+                                       
+                                  <textarea id="console" rows="10" name="activityContent" style="max-width: 100%;font-size:28px" class="form-control required">${activity.activityContent}</textarea>
+                                      
+                                        <div class="form-actions">
+                                            <div class="row">
+                                                <div class="col-md-offset-5 ">
+                                                    <button type="submit" class="btn green" id="mysubmit">
+                                                        <i class="fa fa-check"></i> 提交</button>
+                                                     <button type="reset" class="btn default" value="Reset">重置</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   
+                        </form> 
+			</div>
+</div>
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-12 ">
+				<!-- BEGIN Portlet PORTLET-->
+				
+
+			</div>
+		</div>
+	</div>
+	<!-- END CONTENT BODY -->
+	<#include "/common/bootAlert_message.html"/>
+		<script src="${base}/res/assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
+			
+        <script src="${base}/res/assets/pages/scripts/components-bootstrap-select.min.js" type="text/javascript"></script>
+        <script src="${base}/res/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+      
+        <script src="${base}/res/assets/js/activity_validation.js" type="text/javascript"></script>
+      
+        <script src="${base}/res/assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script>
+       
+       
+        <script src="${base}/res/assets/pages/scripts/components-bootstrap-touchspin.min.js" type="text/javascript"></script>
+        
+        <script src="${base}/res/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+           
+        <script src="${base}/res/assets/global/plugins/jquery-validation/js/localization/messages_zh.js"></script>
+        
+  </div>
+	</div>
+	
+</body>
+
+</html>

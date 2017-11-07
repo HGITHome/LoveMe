@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.dgut.member.entity">
+	<class name="LoverActivity" table="lo_lover_activity">
+		<meta attribute="sync-DAO">false</meta>
+		<!-- <cache usage="read-write"/> -->
+		<id name="id" type="integer" column="id"><generator class="identity"/></id>
+		
+		<property name="day_number" column="day_number" type="integer" length="11" not-null="true" />
+
+        <property name="loverUUID" column="pairUUID" type="string" length="32" not-null="true"/>
+
+		<property name="start_time" column="start_time" type="timestamp" not-null="false"/>
+		
+		<property name="completion_status" column="completion_status" type="integer" length="11" not-null="false" />
+		
+		<property name="completion_time" column="completion_time" type="timestamp" not-null="false"/>
+		
+		<many-to-one name="activity" column="activity_id" class="com.dgut.member.entity.Activity" unique="true"></many-to-one>
+	    
+	    <list name="records">
+	       <key column="lover_activity_id"></key>
+	       <list-index column="upload_index" />
+	       <one-to-many class="com.dgut.member.entity.LoverActivityRecord"/>
+	    </list>
+		
+	</class>
+</hibernate-mapping>

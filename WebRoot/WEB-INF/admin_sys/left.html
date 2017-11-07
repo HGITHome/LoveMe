@@ -1,0 +1,240 @@
+
+<div class="page-sidebar-wrapper">
+	<!-- BEGIN SIDEBAR -->
+	<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+	<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+	<div class="page-sidebar navbar-collapse collapse">
+		<!-- BEGIN SIDEBAR MENU -->
+		<!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+		<!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+		<!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+		<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+		<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+		<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+		<ul class="page-sidebar-menu  page-header-fixed "
+			data-keep-expanded="false" data-auto-scroll="true"
+			data-slide-speed="200" style="padding-top: 20px">
+			<!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+			<li class="sidebar-toggler-wrapper hide">
+				<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+				<div class="sidebar-toggler"></div> <!-- END SIDEBAR TOGGLER BUTTON -->
+			</li>
+			<!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
+
+			<li class="nav-item <#if tb_11??>start active open</#if>" id="tb_11" ><a href="javascript:;"
+				class="nav-link nav-toggle"> <i class="icon-home"></i> <span
+					class="title">首页</span> <span class="arrow <#if tb_11_arrow??>open</#if>"></span> </a>
+				<ul class="sub-menu" <#if tb_11_ul??>display="block"</#if>>
+					<li class="nav-item <#if tb_11_li_1??>start active open</#if>"><a href="${base}/admin/index.do"
+						class="nav-link "> <i class="icon-home"></i> <span
+							class="title">系统信息</span> <span class="selected"></span> </a></li>
+					<li class="nav-item <#if tb_11_li_2??>start active open</#if>"><a href="${base}/admin/personal/v_profile.do"
+						class="nav-link "> <i class="icon-home"></i> <span
+							class="title">个人信息</span> <span class="selected"></span> </a></li>
+				</ul>
+			</li>
+			
+		
+				<!-- //登录管理 -->
+				<@cms_perm url="/frame/user">
+			<li class="nav-item <#if tb_12??>start active open</#if>" id="tb_12"><a href="javascript:;"
+				class="nav-link nav-toggle"> <i class="icon-user"></i> <span
+					class="title">用户管理</span> <span class="arrow <#if tb_12_arrow??>open</#if>"></span> </a>
+				<ul class="sub-menu" <#if tb_12_ul??>display="block"</#if>>
+				
+				<@cms_perm url="/user/v_list.do">
+				<li class="nav-item <#if tb_12_li_0??>start active open</#if>">
+								<a href="${base}/admin/admin_global/v_list.do" class="nav-link "> 
+									<i class="fa fa-group"></i> 
+									<span class="title">用户管理</span>
+								  </a>
+							</li>
+				</@cms_perm>
+				
+				<@cms_perm url="/role/v_list.do">
+				<li class="nav-item <#if tb_12_li_1??>start active open</#if>">
+								<a href="${base}/admin/role/v_list.do" class="nav-link "> 
+									<i class="fa fa-group"></i> 
+									<span class="title"><@s.m "cmsRole.function"/></span>
+								  </a>
+							</li>
+				</@cms_perm>
+		
+		
+				<@cms_perm url="/log/v_list_operating.do">
+				<li class="nav-item <#if tb_12_li_2??>start active open</#if>">
+								<a href="${base}/admin/log/v_list_operating.do" class="nav-link "> 
+									<i class="fa fa-hourglass"></i> 
+									<span class="title"><@s.m "cmsLog.function.operating"/></span>
+								  </a>
+							</li>
+				</@cms_perm>
+				<@cms_perm url="/log/v_list_login_success.do">
+				<li class="nav-item <#if tb_12_li_3??>start active open</#if>">
+								<a href="${base}/admin/log/v_list_login_success.do" class="nav-link "> 
+									<i class="fa fa-bookmark"></i> 
+									<span class="title"><@s.m "cmsLog.function.loginSuccess"/></span>
+								  </a>
+							</li>
+				</@cms_perm>
+				<@cms_perm url="/log/v_list_login_failure.do">
+				<li class="nav-item <#if tb_12_li_4??>start active open</#if>">
+								<a href="${base}/admin/log/v_list_login_failure.do" class="nav-link "> 
+									<i class="fa fa-warning"></i> 
+									<span class="title"><@s.m "cmsLog.function.loginFailure"/></span>
+								  </a>
+							</li>
+				</@cms_perm>
+					
+				
+				</ul>
+			</li>
+				</@cms_perm>
+				
+				
+				
+				<@cms_perm url="/fram/member">
+			<li class="nav-item <#if tb_13??>start active open</#if>" id="tb_13"><a href="javascript:;"
+				class="nav-link nav-toggle"> <i class="icon-diamond"></i> 
+				<span class="title">会员管理</span> <span class="arrow <#if tb_13_arrow??>open</#if>"></span> </a>
+				<@cms_perm url="/member/v_list.do">
+				<ul class="sub-menu" <#if tb_13_ul??>display="block"</#if>>
+					<li class="nav-item <#if tb_13_li_1??>start active open</#if>"><a href="${base}/admin/member/log/v_list.do"
+						class="nav-link "> <i class="fa fa-cubes"></i> <span
+							class="title">会员列表</span> <span class="selected"></span> </a></li>
+				    <li class="nav-item <#if tb_13_li_2??>start active open</#if>"><a href="${base}/admin/member/log/v_list_operating.do"
+						class="nav-link "> <i class="fa fa-cubes"></i> <span
+							class="title">会员操作日志</span> <span class="selected"></span> </a></li>
+					<li class="nav-item <#if tb_13_li_3??>start active open</#if>"><a href="${base}/admin/member/log/v_list_login_success.do"
+						class="nav-link "> <i class="fa fa-cubes"></i> <span
+							class="title">登录成功日志</span> <span class="selected"></span> </a></li>
+							<li class="nav-item <#if tb_13_li_4??>start active open</#if>"><a href="${base}/admin/member/log/v_list_login_failure.do"
+						class="nav-link "> <i class="fa fa-cubes"></i> <span
+							class="title">登录失败日志</span> <span class="selected"></span> </a></li>
+				</ul>
+					</@cms_perm>
+			</li>
+			</@cms_perm>
+				
+				
+		 <@cms_perm url="/frame/memberType/">
+			<li class="nav-item <#if tb_14??>start active open</#if>" id="tb_14"><a href="javascript:;"
+				class="nav-link nav-toggle"> <i class="icon-diamond"></i> 
+				<span class="title">会员信息管理</span> <span class="arrow <#if tb_14_arrow??>open</#if>"></span> </a>
+				<@cms_perm url="/member/v_list.do">
+				<ul class="sub-menu" <#if tb_14_ul??>display="block"</#if>>
+					<li class="nav-item <#if tb_14_li_1??>start active open</#if>"><a href="${base}/admin/member/v_list.do"
+						class="nav-link "> <i class="fa fa-cubes"></i> <span
+							class="title">会员列表</span> <span class="selected"></span> </a></li>
+				</ul>
+					</@cms_perm>
+			</li>
+		</@cms_perm>
+		<@cms_perm url="/frame/memberApply/">
+			<li class="nav-item <#if tb_15??>start active open</#if>" id="tb_15"><a href="javascript:;"
+				class="nav-link nav-toggle"> <i class="icon-users"></i> 
+				<span class="title">恋人关系</span> <span class="arrow <#if tb_15_arrow??>open</#if>"></span> </a>
+				
+				<ul class="sub-menu" <#if tb_15_ul??>display="block"</#if>>
+				<@cms_perm url="/apply/">
+					<li class="nav-item <#if tb_15_li_1??>start active open</#if>"><a href="${base}/admin/member/apply/v_list.do"
+						class="nav-link "> <i class="fa fa-cubes"></i> <span
+							class="title">申请列表</span> <span class="selected"></span> </a></li>
+				</@cms_perm>
+				<@cms_perm url="/ship/">
+					<li class="nav-item <#if tb_15_li_2??>start active open</#if>"><a href="${base}/admin/member/ship/v_list.do"
+						class="nav-link "> <i class="fa fa-cubes"></i> <span
+							class="title">恋人列表</span> <span class="selected"></span> </a></li>
+				</@cms_perm>
+				</ul>
+					
+			</li>
+		</@cms_perm>
+		
+			<@cms_perm url="/frame/ThumbsUp/">
+			<li class="nav-item <#if tb_16??>start active open</#if>" id="tb_16"><a href="javascript:;"
+				class="nav-link nav-toggle"> <i class="icon-users"></i> 
+				<span class="title">点赞管理</span> <span class="arrow <#if tb_16_arrow??>open</#if>"></span> </a>
+				<@cms_perm url="/thumbsup/">
+				<ul class="sub-menu" <#if tb_16_ul??>display="block"</#if>>
+					<li class="nav-item <#if tb_16_li_1??>start active open</#if>"><a href="${base}/admin/member/thumbsUp/v_list.do"
+						class="nav-link "> <i class="fa fa-cubes"></i> <span
+							class="title">点赞列表</span> <span class="selected"></span> </a></li>
+				</ul>
+					</@cms_perm>
+			</li>
+		</@cms_perm>
+		
+		  <@cms_perm url="/frame/Activity/">
+			<li class="nav-item <#if tb_17??>start active open</#if>" id="tb_17"><a href="javascript:;"
+				class="nav-link nav-toggle"> <i class="icon-diamond"></i> 
+				<span class="title">活动管理</span> <span class="arrow <#if tb_17_arrow??>open</#if>"></span> </a>
+				<@cms_perm url="/Activity/">
+				<ul class="sub-menu" <#if tb_17_ul??>display="block"</#if>>
+				<!-- <li class="nav-item <#if tb_17_li_1??>start active open</#if>"><a href="${base}/admin/member/activity/v_plan.do"
+						class="nav-link "> <i class="fa fa-cubes"></i> <span
+							class="title">策划活动</span> <span class="selected"></span> </a></li> -->
+				<li class="nav-item <#if tb_17_li_1??>start active open</#if>"><a href="${base}/admin/member/activity/v_list.do"
+						class="nav-link "> <i class="fa fa-cubes"></i> <span
+							class="title">活动列表</span> <span class="selected"></span> </a></li>
+				</ul>
+					</@cms_perm>
+			</li>
+		</@cms_perm>
+			
+			<!-- 举报管理 -->
+			<@cms_perm url="/frame/Accusation/">
+			<li class="nav-item <#if tb_18??>start active open</#if>" id="tb_18"><a href="javascript:;"
+				class="nav-link nav-toggle"> <i class="icon-screen-tablet"></i> 
+				<span class="title">举报管理</span> <span class="arrow <#if tb_18_arrow??>open</#if>"></span> </a>
+				<@cms_perm url="/accusation/v_list.do">
+				<ul class="sub-menu" <#if tb_18_ul??>display="block"</#if>>
+				<li class="nav-item <#if tb_18_li_1??>start active open</#if>"><a href="${base}/admin/accusation/category/v_list.do"
+						class="nav-link "> <i class="fa fa-cubes"></i> <span
+							class="title">举报类别</span> <span class="selected"></span> </a></li>
+					<li class="nav-item <#if tb_18_li_2??>start active open</#if>"><a href="${base}/admin/accusation/v_list.do"
+						class="nav-link "> <i class="fa fa-group"></i> <span
+							class="title">举报列表</span> <span class="selected"></span> </a></li>
+				</ul>
+					</@cms_perm>
+			</li>
+			</@cms_perm>
+			
+			<@cms_perm url="/memberStatistics/v_list.do">
+			<li class="nav-item <#if tb_19??>start active open</#if>" id="tb_19"><a href="javascript:;"
+				class="nav-link nav-toggle"> <i class="icon-graph"></i> 
+				<span class="title">数据统计</span> <span class="arrow <#if tb_19_arrow??>open</#if>"></span> </a>
+				<@cms_perm url="/member/v_list.do">
+				<ul class="sub-menu" <#if tb_19_ul??>display="block"</#if>>
+				<li class="nav-item <#if tb_19_li_1??>start active open</#if>"><a href="${base}/admin/member/v_list.do"
+						class="nav-link "> <i class="fa fa-cubes"></i> <span
+							class="title">用户数据统计</span> <span class="selected"></span> </a></li>
+					<li class="nav-item <#if tb_19_li_2??>start active open</#if>"><a href="${base}/admin/member/v_list.do"
+						class="nav-link "> <i class="fa fa-cubes"></i> <span
+							class="title">活动数据统计</span> <span class="selected"></span> </a></li>
+				</ul>
+					</@cms_perm>
+			</li>
+			</@cms_perm>
+			<!-- //维护管理 -->
+			<@cms_perm url="/frame/data/">
+			<li class="nav-item <#if tb_20??>start active open</#if>" id="tb_20"><a href="javascript:;"
+				class="nav-link nav-toggle"> <i class="icon-diamond"></i> 
+				<span class="title">维护管理 </span> <span class="arrow <#if tb_20_arrow??>open</#if>"></span> </a>
+				<@cms_perm url="/data/v_list.do">
+				<ul class="sub-menu" <#if tb_20_ul??>display="block"</#if>>
+					<li class="nav-item <#if tb_20_li_1??>start active open</#if>"><a href="${base}/admin/data/v_list.do"
+						class="nav-link "> <i class="fa fa-database"></i> <span
+							class="title">数据库备份</span> <span class="selected"></span> </a></li>
+					<li class="nav-item <#if tb_20_li_2??>start active open</#if>"><a href="${base}/admin/data/file/v_list.do"
+						class="nav-link "> <i class="fa fa-database"></i> <span
+							class="title">备份文件列表</span> <span class="selected"></span> </a></li>
+				</ul>
+					</@cms_perm>
+			</li>
+			</@cms_perm>
+		</ul>
+		<!-- END SIDEBAR MENU -->
+		<!-- END SIDEBAR MENU -->
+	</div>
+</div>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.dgut.main.entity">
+	<class name="AccusationPicture" table="lo_accusation_picture">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write"/>
+		<id name="id" type="integer" column="picture_id"><generator class="identity"/></id>
+		<property name="photoUrl" column="photoUrl" type="string" not-null="true" length="100"/>
+		<property name="miniUrl" column="miniUrl" type="string" not-null="true" length="100"/>
+		<many-to-one name="acUser" column="accusation_user_id" class="com.dgut.main.entity.AccusationUser" not-null="true" />
+	</class>
+</hibernate-mapping>

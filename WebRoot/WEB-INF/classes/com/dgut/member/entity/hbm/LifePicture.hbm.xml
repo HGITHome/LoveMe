@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.dgut.member.entity">
+	<class name="LifePicture" table="lo_life_pictures">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write"/>
+		<id name="pictureId" type="java.lang.Integer" column="picture_id"><generator class="identity"/></id>
+		
+		<many-to-one name="memberInfo" column="memberInfo_id" cascade="save-update" class="com.dgut.member.entity.MemberInfo" not-null="true"/>
+		
+		<property name="photoUrl" column="photoUrl" type="string" not-null="false"  length="100"/>
+		<property name="miniUrl" column="miniUrl" type="string" not-null="false"  length="100"/>
+		   <!--  <many-to-one name="customer" column="CUSTOMER_ID" cascade="save-update"  
+         class="com.lwp.hibernate.Model.Customer" not-null="true"/>   -->
+        
+	</class>
+</hibernate-mapping>

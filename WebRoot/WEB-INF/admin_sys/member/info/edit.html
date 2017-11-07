@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+Version: 4.5.5
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Dribbble: www.dribbble.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+<head>
+    <meta charset="utf-8" />
+    <title>LoveMe-App管理系统</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link href="${base}/res/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="${base}/res/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+    <link href="${base}/res/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <#include "/admin_sys/head.html"/>
+</head>
+<!-- END HEAD -->
+
+<body
+        class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-md">
+<!-- BEGIN HEADER -->
+<#include "/admin_sys/top.html"/>
+<!-- END HEADER -->
+<!-- BEGIN HEADER & CONTENT DIVIDER -->
+<div class="clearfix"></div>
+<!-- END HEADER & CONTENT DIVIDER -->
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+    <!-- BEGIN SIDEBAR -->
+    <#assign tb_14=true />
+    <#assign tb_14_ul=true  />
+    <#assign tb_14_li_1=true />
+    <#assign tb_14_arrow=true />
+    <#include "/admin_sys/left.html"/>
+    <!-- END SIDEBAR -->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <!-- BEGIN CONTENT BODY -->
+            <div class="page-bar">
+                <ul class="page-breadcrumb">
+                    <li>
+                        <a href="v_list.do">Loveme-App管理系统</a>
+                        <i class="fa fa-circle"></i>
+                    </li>
+                    <li>
+                        <span>录入会员信息</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet light bordered" id="form_wizard_1">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class=" icon-layers font-green"></i>
+                                        <span class="caption-subject font-green bold uppercase"> 录入会员信息中 -
+                                            <span class="step-title"> STEP 1 of 4 </span>
+                                        </span>
+                            </div>
+                            <div class="actions">
+                            	
+									<a class="dt-button buttons-print btn green  btn-outline"
+											href="v_list.do" tabindex="0"><span>返回</span> </a>
+								</div>
+
+                        </div>
+                         
+                        <div class="portlet-body form">
+                            <form class="form-horizontal" action="o_update.do" id="update_form"  enctype="multipart/form-data" method="POST">
+                                <div class="form-wizard">
+                                    <div class="form-body">
+                                        <ul class="nav nav-pills nav-justified steps">
+                                            <li>
+                                                <a href="#tab1" data-toggle="tab" class="step">
+                                                    <span class="number"> 1 </span>
+                                                            <span class="desc">
+                                                                <i class="fa fa-check"></i> 基本信息 </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#tab2" data-toggle="tab" class="step">
+                                                    <span class="number"> 2 </span>
+                                                            <span class="desc">
+                                                                <i class="fa fa-check"></i> 详细信息 </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#tab3" data-toggle="tab" class="step active">
+                                                    <span class="number"> 3 </span>
+                                                            <span class="desc">
+                                                                <i class="fa fa-check"></i> 兴趣信息 </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#tab4" data-toggle="tab" class="step active">
+                                                    <span class="number"> 4 </span>
+                                                            <span class="desc">
+                                                                <i class="fa fa-check"></i> 确认信息 </span>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                        <input type="hidden" name="id" value="${member.id!''}">
+                                        <div id="bar" class="progress progress-striped" role="progressbar">
+                                            <div class="progress-bar progress-bar-success"> </div>
+                                        </div>
+                                        <div class="tab-content">
+                                            <div class="alert alert-danger display-none">
+                                                <button class="close" data-dismiss="alert"></button> 资料填写不完整，请填写好再提交. </div>
+                                            <div class="alert alert-success display-none">
+                                                <button class="close" data-dismiss="alert"></button> Your form validation is successful! </div>
+                                            <div class="tab-pane active" id="tab1">
+                                             
+                                                <h3 class="block">填写个人基本信息</h3>
+                                                <div id="pictureTab">
+                                                  <div class="form-group">
+                                                    <label class="control-label col-md-3">头像
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="file" class="form-control" name="photo" onchange='PreviewImage(this)'/>
+														<div id="form_file_error"></div>
+                                                    </div>
+                                                    <button class="btn btn-success" id="addFile" style="float:left;margin-right:4px; ">添加上传文件框</button>
+                                                    <button class="btn btn-success" id="deleteFile" style="display:none;float:left;">删除上传文件框</button>
+                                                 </div>
+                                                 <div id="fileForm">
+                                                  <div class="form-group">
+                                                    <label class="control-label col-md-3">生活照
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="file" class="form-control" name="photo"/>
+														<div id="form_file_error"></div>
+                                                    </div>
+                                                 </div>
+                                                 </div>
+                                                </div>
+                                               <div class="form-group">
+                                                    <label class="control-label col-md-3">昵称
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="nickname" id="nickname"/>
+
+                                                    </div>
+                                                   </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">姓名
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="username" id="username"/>
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">性别
+                                                        <span class="required"> * </span>
+                                                    </label>
+
+                                                    <div class="col-md-4">
+                                                        <div class="md-radio-inline">
+
+                                                            <div class="md-radio">
+                                                                <input type="radio" value="1" id="oBtn"
+                                                                       name="sex"  data-title="男" 
+                                                                       class="md-radiobtn">
+                                                                <label for="oBtn">
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span>男</label>
+                                                            </div>
+
+                                                            <div class="md-radio">
+                                                                <input type="radio" value="0" id="fBtn"
+                                                                       name="sex"  data-title="女"
+                                                                       class="md-radiobtn">
+                                                                <label for="fBtn">
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span>女</label>
+                                                            </div>
+
+                                                        </div>
+                                                        <div id="form_sex_error"></div>
+                                                    </div>
+                                                </div>
+                                                
+                                                 <div class="form-group">
+                                                    <label class="control-label col-md-3">年龄
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="age" id="age"/>
+
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">出生年月
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="birthday" id="birthday" placeholder="xxxx-xx-xx" />
+
+                                                    </div>
+
+                                                </div>
+                                                
+                                              <div class="form-group">
+                                                    <label class="control-label col-md-3">所属籍贯
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-1" style="margin-right: 12px;">    
+                                                        <select name="province" id="provinceList" class="form-control input-small">
+                                                            <option>--请选择省份--</option>
+                                                           	<#list provinceList as province>
+                                                            <option value="${province.id}" data-title="${province.name}">${province.name}</option>
+                                                            </#list>
+                                                        </select>
+                                                    </div >
+                                                  
+                                                    <div class="col-md-2">    
+                                                        <select name="city" id="cityList" class="form-control input-small">
+                                                            <option>--请选择城市--</option>
+                                                           	<#list cityList as city>
+                                                            <option value="${city.id}" data-title="${city.name}">${city.name}</option>
+                                                            </#list>
+                                                        </select>
+                                                    </div >
+                                                </div>
+
+
+                                      <div class="form-group">
+                                                    <label class="control-label col-md-3">所属专业
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <select name="major" id="majorList" class="form-control input-small">
+                                                            <option value="">--请选择专业--</option>
+                                                           	<#list majorList as major>
+                                                            <option value="${major.id}" data-title="${major.majorName}">${major.majorName}</option>
+                                                            </#list>
+                                                        </select>
+                                                    	<div id="form_major_error"></div>	 
+                                                    </div >
+                                              
+                                          </div>
+                                              <div class="form-group">
+                                                    <label class="control-label col-md-3">邮箱
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="email" id="email"/>
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">联系方式
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="mobile" id="mobile"/>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="tab2">
+                                                <h3 class="block">详细信息</h3>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">我的个性标签
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="md-checkbox-inline">
+                                                        <#list labelList as label>
+                                                            <div class="md-checkbox">
+                                                                <input type="checkbox" id="checkbox${label.key}" class="md-check" value="${label.key}" name="labels[]" data-title="${label.name}" >
+                                                                <label for="checkbox${label.key}">
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span>${label.name} </label>
+                                                            </div>
+                                                            
+                                                          </#list>
+                                                             <div class="md-checkbox">
+                                                                <input type="checkbox" id="checkboxA1_29" class="md-check" name="labels[]" value="A1.29" data-title="其他个性标签:">
+                                                                <label for="checkboxA1_29">
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span>其他
+                                                                   <input type="text" class=" form-md-line-input" name="label_others" id="label_others" disabled="true" placeholder="请输入其他个性标签" />
+
+                                                                </label>
+                                                            </div>
+                                                            <div id="form_label_error"> </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                       <div class="form-group">
+                                                    <label class="control-label col-md-3">我的星座类型
+                                                        <span class="required"> * </span>
+                                                    </label>
+
+                                                    <div class="col-md-4">   
+                                                        <select name="constellation" id="constellationList" class="form-control input-small">
+                                                            <option>--请选择星座--</option>
+                                                           	<#list constellationList as constellation>
+                                                            <option value="${constellation.key}" data-title="${constellation.name}">${constellation.name}</option>
+                                                            </#list>
+                                                        </select>
+                                                    	<div id="form_constellation_error"></div>
+														 
+                                                    </div >
+                                                   
+                                                </div>
+                                                 <div class="form-group">
+                                                    <label class="control-label col-md-3">我的签名
+                                                        <span class="required"> * </span>
+                                                    </label>
+
+                                                   <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="autograph" id="autograph" />
+                                                    </div>
+                                                   
+                                                </div>
+                                                
+                                               <div class="form-group">
+                                                    <label class="control-label col-md-3">我的社交账号
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="wechat" id="wechat" />
+
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                            <div class="tab-pane" id="tab3">
+                                                <h3 class="block">兴趣信息</h3>
+                                           <div class="form-group ">
+                                                    <label class="col-md-3 control-label" >我喜欢的运动的类型
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="md-checkbox-inline">
+                                                        <#list sportList as sport>
+                                                            <div class="md-checkbox">
+                                                                <input type="checkbox" id="checkbox${sport.key}" class="md-check" value="${sport.key}" name="sports[]" data-title="${sport.name}" >
+                                                                <label for="checkbox${sport.key}">
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span>${sport.name} </label>
+                                                            </div>
+                                                            
+                                                          </#list>
+                                                             <div class="md-checkbox">
+                                                                <input type="checkbox" id="checkboxA3_27" class="md-check" name="sports[]" value="A3.27" data-title="其他运动类型:">
+                                                                <label for="checkboxA3_27">
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span>其他
+                                                                   <input type="text" class=" form-md-line-input" name="sport_others" id="sport_others" disabled="true" placeholder="请输入其他其他运动类型" />
+
+                                                                </label>
+                                                            </div>
+                                                            <div id="form_sport_error"> </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                <div class="form-group ">
+                                                    <label class="col-md-3 control-label" >我喜欢的音乐类型
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="md-checkbox-inline">
+                                                        <#list musicList as music>
+                                                            <div class="md-checkbox">
+                                                                <input type="checkbox" id="checkbox${music.key}" class="md-check" value="${music.key}" name="music[]" data-title="${music.name}">
+                                                                <label for="checkbox${music.key}">
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span>${music.name} </label>
+                                                            </div>
+                                                           </#list>
+                                                         <div class="md-checkbox">
+                                                                <input type="checkbox" id="checkboxA4_11" class="md-check" name="music[]" value="A4.11" data-title="其他音乐类型:">
+                                                                <label for="checkboxA4_11">
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span>其他
+                                                                   <input type="text" class=" form-md-line-input" name="music_others" id="music_others" disabled="true" placeholder="请输入其他音乐类型" />
+
+                                                                </label>
+
+                                                            </div>
+                                                            <div id="form_music_error"> </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                             <div class="form-group">
+                                                    <label class="col-md-3 control-label" >我喜欢的食物类型
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="md-checkbox-inline">
+                                                        <#list foodList as food>
+                                                            <div class="md-checkbox">
+                                                                <input type="checkbox" id="checkbox${food.key}" class="md-check" name="foods[]" value="${food.key}" data-title="${food.name}">
+                                                                <label for="checkbox${food.key}">
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span>${food.name} </label>
+                                                            </div>
+                                                         </#list>
+                                                            <div class="md-checkbox">
+                                                                <input type="checkbox" id="checkboxA5_11" class="md-check" name="foods[]" value="A5.11" data-title="其他食物类型:">
+                                                                <label for="checkboxA5_11">
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span>其他
+                                                                   <input type="text" class=" form-md-line-input" name="food_others" id="food_others" disabled="true" placeholder="请输入其他食物类型" />
+
+                                                                </label>
+
+                                                            </div>
+                                                            <div id="form_food_error"> </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                             <div class="form-group">
+                                                    <label class="col-md-3 control-label" >我喜欢的电影类型
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="md-checkbox-inline">
+                                                        <#list filmList as film>
+                                                            <div class="md-checkbox">
+                                                                <input type="checkbox" id="checkbox${film.key}" class="md-check" name="films[]" value="${film.key}" data-title="${film.name}">
+                                                                <label for="checkbox${film.key}">
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span>${film.name} </label>
+                                                            </div>
+                                                         </#list>
+                                                            <div class="md-checkbox">
+                                                                <input type="checkbox" id="checkboxA6_6" class="md-check" name="films[]" value="A6.6" data-title="其他电影类型:">
+                                                                <label for="checkboxA6_6">
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span>其他
+                                                                   <input type="text" class=" form-md-line-input" name="film_others" id="film_others" disabled="true" placeholder="请输入其他电影类型" />
+
+                                                                </label>
+
+                                                            </div>
+                                                            <div id="form_film_error"> </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                           <div class="form-group">
+                                                    <label class="col-md-3 control-label" >我喜欢的书和动漫类型
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="md-checkbox-inline">
+                                                        <#list bookList as book>
+                                                            <div class="md-checkbox">
+                                                                <input type="checkbox" id="checkbox${book.key}" class="md-check" name="books[]" value="${book.key}" data-title="${book.name}">
+                                                                <label for="checkbox${book.key}">
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span>${book.name} </label>
+                                                            </div>
+                                                            </#list>
+                                                            <div class="md-checkbox">
+                                                                <input type="checkbox" id="checkboxA7_6" class="md-check" name="books[]" value="A7.6" data-title="其他书和动漫类型:">
+                                                                <label for="checkboxA7_6">
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span>其他
+                                                                   <input type="text" class=" form-md-line-input" name="book_others" id="book_others" disabled="true" placeholder="请输入其他书和动漫类型" />
+
+                                                                </label>
+
+                                                            </div>
+                                                            <div id="form_book_error"> </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                   <div class="form-group">
+                                                    <label class="col-md-3 control-label" >我的旅行足迹
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="md-checkbox-inline">
+                                                        <#list travelList as travel>
+                                                            <div class="md-checkbox">
+                                                                <input type="checkbox" id="checkbox${travel.key}" class="md-check" name="travels[]" value="${travel.key}" data-title="${travel.name}">
+                                                                <label for="checkbox${travel.key}">
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span>${travel.name}</label>
+                                                            </div>
+                                                            </#list>
+                                                            <div class="md-checkbox">
+                                                                <input type="checkbox" id="checkboxA8_6" class="md-check" name="travels[]" value="A8.6" data-title="其他旅行足迹:">
+                                                                <label for="checkboxA8_6">
+                                                                    <span></span>
+                                                                    <span class="check"></span>
+                                                                    <span class="box"></span>其他
+                                                                   <input type="text" class=" form-md-line-input" name="travel_others" id="travel_others" disabled="true" placeholder="请输入其他旅行足迹" />
+
+                                                                </label>
+
+                                                            </div>
+                                                            <div id="form_travel_error"> </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                       <div class="tab-pane" id="tab4">
+                                                <h3 class="block">确认信息</h3>
+                                                <h4 class="form-section">基本信息</h4>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">头像:</label>
+                                                    <div class="col-md-4">
+                                                       <div id="imgPreview" >  
+                                                            <img id="img1" src=""  class="img-circle"/>  
+                                                        </div> 
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">昵称姓名:</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="nickname"> </p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">姓名:</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="username"> </p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">性别:</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="sex"> </p>
+                                                    </div>
+                                                </div>
+                                                
+                                                 <div class="form-group">
+                                                    <label class="control-label col-md-3">年龄</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="age"> </p>
+                                                    </div>
+                                                </div>
+                                                 <div class="form-group">
+                                                    <label class="control-label col-md-3">出生年月</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="birthday"> </p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">所属籍贯</label>
+                                                    <div class="col-md-4">
+                                                    	<p class="form-control-static" data-display="province">- </p>
+                                                        <p class="form-control-static" data-display="city"> </p>
+                                                    </div>
+                                                </div>
+                                                 <div class="form-group">
+                                                    <label class="control-label col-md-3">所读专业</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="major"> </p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">邮箱</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="email"> </p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">联系方式</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="mobile"> </p>
+                                                    </div>
+                                                </div>
+                                                <h4 class="form-section">个人详细信息</h4>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">我的个性标签:</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="labels[]"> </p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">我的性格类型:</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="characters[]"> </p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">我的星座类型:</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="constellation"> </p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">我的签名:</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="autograph"> </p>
+                                                    </div>
+                                                </div>
+                                                 <div class="form-group">
+                                                    <label class="control-label col-md-3">我的社交账号:</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="wechat"> </p>
+                                                    </div>
+                                                </div>
+                                                <h4 class="form-section">兴趣信息</h4>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">我喜欢的运动类型</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="sports[]"> </p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">我喜欢的音乐类型:</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="music[]"> </p><br>
+                                                        <!-- <p class="form-control-static" data-display="income_others"></p> -->
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">我喜欢的食物类型:</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="foods[]"> </p><br>
+                                                       <!--  <p class="form-control-static" data-display="pay_others"></p> -->
+                                                    </div>
+                                                </div>
+                                                 <div class="form-group">
+                                                    <label class="control-label col-md-3">我喜欢的电影类型:</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="films[]"> </p><br>
+                                                       <!--  <p class="form-control-static" data-display="pay_others"></p> -->
+                                                    </div>
+                                                </div>
+                                                 <div class="form-group">
+                                                    <label class="control-label col-md-3">我喜欢的书和动漫类型:</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="books[]"> </p><br>
+                                                       <!--  <p class="form-control-static" data-display="pay_others"></p> -->
+                                                    </div>
+                                                </div>
+                                                 <div class="form-group">
+                                                    <label class="control-label col-md-3">我的旅行足迹:</label>
+                                                    <div class="col-md-4">
+                                                        <p class="form-control-static" data-display="travels[]"> </p><br>
+                                                       <!--  <p class="form-control-static" data-display="pay_others"></p> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  
+                                    
+                                   
+                                </div>
+                               
+                                 <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-9">
+                                        	<a href="javascript:;" class="btn default button-previous">
+                                                    <i class="fa fa-angle-left"></i> 返回 </a>
+                                            <a href="javascript:;" class="btn btn-outline green button-next"> 下一步
+                                                    <i class="fa fa-angle-right"></i>
+                                            </a>
+                                            <button type="submit" class="btn green button-submit">
+                                                <i class="fa fa-check"></i> 提交
+                                            </button>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- BEGIN CONTENT -->
+
+          <script type="text/javascript">
+          
+          var provinceEle = document.getElementById("provinceList");
+          provinceEle.onchange = function(){
+              // 清空
+              var citys = document.getElementById("cityList");
+              var opts = citys.getElementsByTagName("option");
+              for(var z=opts.length-1;z>0;z--){
+                  citys.removeChild(opts[z]);
+              }
+              if(provinceEle.value != "请选择省份"){
+                  // 2. 执行Ajax异步请求
+                  var xhr = getXhr();
+                  xhr.open("post","ajaxAddress.do");
+                  xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                  xhr.send("id="+provinceEle.value);
+              }else{
+              	var xhr = getXhr();
+                  xhr.open("post","ajaxAddress.do");
+                  xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                  xhr.send("id="+"");
+              }
+                  xhr.onreadystatechange = function(){
+                      if(xhr.readyState==4&&xhr.status==200){
+                          // 接收服务器端的数据内容
+                          var data = xhr.responseText;
+                          // data是字符串,转换为数组
+                          var index = data.indexOf("=");
+                          var cityNames = data.substring(0, index).split(',');
+                          var cityIds = data.substring(index+1).split(',');
+                          for(var i=0;i<cityNames.length;i++){
+                              var option = document.createElement("option");
+                              option.value = cityIds[i];
+                              var textNode = document.createTextNode(cityNames[i]); 
+                              option.appendChild(textNode);
+                              citys.appendChild(option);
+                          }
+                      }
+                  };
+              
+          };
+          
+          function getXhr(){
+        	    var xhr = null;
+        	    if(window.XMLHttpRequest){
+        	        xhr = new XMLHttpRequest();
+        	    }else{
+        	        xhr = new ActiveXObject("Microsoft.XMLHttp");
+        	    }
+        	    return xhr;
+        	} 
+          
+          
+          $('#addFile').click(function(){
+        	  var fileForm = $('#fileForm');
+        	  $('#pictureTab').append(fileForm.html());
+        	  if($('#pictureTab').children('div').length > 2){
+        		  $('#deleteFile').css('display','block');
+        	  }
+        	  if($('#pictureTab').children('div').length == 5){
+        		  $('#addFile').css('display','none');
+        	  }
+        	  return false;
+          });
+          $('#deleteFile').click(function(){
+        	    $('#pictureTab').children().last().remove();
+        	    if($('#pictureTab').children('div').length <= 2){
+          		   $('#deleteFile').css('display','none');
+        	     }
+        	    if($('#pictureTab').children('div').length < 5){
+        	    	$('#addFile').css('display','block');
+        	    }
+        	  return false;
+          });
+          
+          
+          
+          function PreviewImage(imgFile)  
+          {  
+              var filextension=imgFile.value.substring(imgFile.value.lastIndexOf("."),imgFile.value.length);  
+              filextension=filextension.toLowerCase();  
+              if ((filextension!='.jpg')&&(filextension!='.gif')&&(filextension!='.jpeg')&&(filextension!='.png')&&(filextension!='.bmp'))  
+              {  
+                  alert("对不起，系统仅支持标准格式的照片，请您调整格式后重新上传，谢谢 !");  
+                  imgFile.focus();  
+              }  
+              else  
+              {  
+                  var path;  
+                  if(document.all)//IE  
+                  {  
+                      imgFile.select();  
+                      path = document.selection.createRange().text;  
+                      document.getElementById("imgPreview").innerHTML="";  
+                      document.getElementById("imgPreview").style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src=\"" + path + "\")";//使用滤镜效果        
+                  }  
+                  else//FF  
+                  {  
+                      path=window.URL.createObjectURL(imgFile.files[0]);// FF 7.0以上  
+                      //path = imgFile.files[0].getAsDataURL();// FF 3.0  
+                      document.getElementById("imgPreview").innerHTML = "<img id='img1' width='120px' height='100px' src='"+path+"'/>";  
+                      //document.getElementById("img1").src = path;  
+                  }  
+              }  
+          }  
+          
+          
+			$(function(){ 
+				    $('#email').val('${member.email!}');
+				    $('#mobile').val('${member.mobile!}');
+				 <#if member.memberInfo??>
+				    $('#nickname').val('${member.memberInfo.nickname!}');
+					$('#username').val('${member.memberInfo.realname!}');
+					$(":radio[name=sex][value='${member.memberInfo.gender}']").attr("checked","checked");
+				    
+					$('#age').val('${member.memberInfo.age!}');
+					$('#birthday').val('${member.memberInfo.birthday!}');
+					<#if member.memberInfo.city??>
+					  $('#provinceList').val('${member.memberInfo.city.province.id!}');
+					  $('#cityList').val('${member.memberInfo.city.id!}');
+					</#if>
+					<#if member.memberInfo.majo??>
+					  $('#majorList').val('${member.memberInfo.major.id!}');
+					</#if>
+					<#if member.memberInfo.labels??>
+				    	var labels='${member.memberInfo.labels}'.split(',');
+					    if(labels.length==1){
+						     $("input:checkbox[value='${member.memberInfo.labels}']").attr('checked',true);
+					     }
+					     else{
+						     for(var i in labels){
+							    $("input:checkbox[value='"+labels[i]+"']").attr('checked',true);
+						  }
+					  }
+					</#if>
+					<#if member.memberInfo.constellation??>
+					   $('#constellationList').val('${member.memberInfo.constellation}');
+					</#if>
+					$('#autograph').val('${member.memberInfo.autograph!}');
+					$('#wechat').val('${member.memberInfo.wechat!}');
+					
+					<#if member.memberInfo.sports??>
+					   var sports='${member.memberInfo.sports}'.split(',');
+					   if(sports.length==1){
+						
+						  $("input:checkbox[value='${member.memberInfo.sports}']").attr('checked',true);
+					    }
+					    else{
+						  for(var i in sports){
+						  	$("input:checkbox[value='"+sports[i]+"']").attr('checked',true);
+						   }
+				    	}
+					</#if>
+					<#if member.memberInfo.music??>
+					    var music='${member.memberInfo.music}'.split(',');
+					    if(music.length==1){
+						
+						   $("input:checkbox[value='${member.memberInfo.music}']").attr('checked',true);
+					    }
+					     else{
+					 	    for(var i in music){
+							$("input:checkbox[value='"+music[i]+"']").attr('checked',true);
+						 }
+					   }
+					</#if>
+					<#if member.memberInfo.foods??>
+					   var foods='${member.memberInfo.foods}'.split(',');
+					   if(foods.length==1){
+						
+						 $("input:checkbox[value='${member.memberInfo.foods}']").attr('checked',true);
+					   }
+					    else{
+						   for(var i in foods){
+							 $("input:checkbox[value='"+foods[i]+"']").attr('checked',true);
+						 }
+					   }
+					</#if>
+					<#if member.memberInfo.films??>
+				     	var films='${member.memberInfo.films}'.split(',');
+					    if(films.length==1){
+						
+						   $("input:checkbox[value='${member.memberInfo.films}']").attr('checked',true);
+					    }
+					    else{
+						   for(var i in films){
+							  $("input:checkbox[value='"+films[i]+"']").attr('checked',true);
+						  }
+					    }
+					</#if>
+					<#if member.memberInfo.books??>
+					    var books='${member.memberInfo.books}'.split(',');
+					    if(books.length==1){
+						
+						  $("input:checkbox[value='${member.memberInfo.books}']").attr('checked',true);
+				    	}
+					     else{
+					    	for(var i in books){
+							 $("input:checkbox[value='"+books[i]+"']").attr('checked',true);
+						 }
+					  }
+					</#if>
+					<#if member.memberInfo.travels??>
+					     var travels='${member.memberInfo.travels}'.split(',');
+					     if(travels.length==1){
+						
+						    $("input:checkbox[value='${member.memberInfo.travels}']").attr('checked',true);
+				    	}
+					      else{
+						      for(var i in travels){
+							    $("input:checkbox[value='"+travels[i]+"']").attr('checked',true);
+					    	}
+					   }
+					</#if>
+				</#if>
+			});
+			</script>
+		
+			
+            <#include "/common/bootAlert_message.html"/>
+            <!-- END CONTENT -->
+            <script src="${base}/res/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+            <script src="${base}/res/assets/global/plugins/jquery-validation/js/localization/messages_zh.js"></script>
+            <script src="${base}/res/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+            <script src="${base}/res/assets/js/member_editvalidation.js" type="text/javascript"></script>
+
+            <script src="${base}/res/assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js" type="text/javascript"></script>
+            <script src="${base}/res/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+            <script src="${base}/res/assets/pages/scripts/components-date-time-pickers.min.js" type="text/javascript"></script>
+
+        </div>
+        <!-- END CONTAINER -->
+   </div>
+   </div>
+</body>
+
+</html>

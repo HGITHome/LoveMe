@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.dgut.member.entity">
+	<class name="Type" table="lo_type">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write"/>
+		<id name="key" type="string" column="key"><generator class="uuid"/></id>
+		<property name="name" column="value" type="string" not-null="true" length="100"/>
+	    <many-to-one name="category" column="category_id" class="com.dgut.member.entity.Category"></many-to-one>
+	</class>
+</hibernate-mapping>

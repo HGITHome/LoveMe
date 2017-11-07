@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.dgut.member.entity">
+	<class name="LoverActivityRecord" table="lo_lover_activity_record">
+		<meta attribute="sync-DAO">false</meta>
+		<!-- <cache usage="read-write"/> -->
+		<id name="id" type="integer" column="record_id"><generator class="identity"/></id>
+		
+		
+		<property name="upload_time" column="upload_time" type="timestamp" not-null="false"/>
+		
+		<property name="photoPath" column="photoUrl" type="string" length="100" not-null="true" />
+		
+		<property name="miniPath" column="miniUrl" type="string" not-null="true"/>
+		
+		<many-to-one name="loverActivity" column="lover_activity_id" class="com.dgut.member.entity.LoverActivity" unique="true"></many-to-one>
+		
+		<many-to-one name="member" column="upload_id" class="com.dgut.member.entity.Member" unique="true"></many-to-one>
+	    
+	</class>
+</hibernate-mapping>

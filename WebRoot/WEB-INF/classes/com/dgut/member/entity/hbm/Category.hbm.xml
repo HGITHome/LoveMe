@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.dgut.member.entity">
+	<class name="Category" table="lo_category">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write"/>
+		<id name="id" type="integer" column="category_id"><generator class="identity"/></id>
+		<property name="name" column="category_name" type="string" not-null="true" length="100"/>
+		<property name="priority" column="priority" type="integer" not-null="true" length="10"/>
+		<property name="listName" column="listName" type="string" not-null="true" length="100" />
+		<set name="types" inverse="true" cascade="all">
+		  <key column="category_id"></key>
+		  <one-to-many class="com.dgut.member.entity.Type"/>
+		</set>
+	</class>
+</hibernate-mapping>

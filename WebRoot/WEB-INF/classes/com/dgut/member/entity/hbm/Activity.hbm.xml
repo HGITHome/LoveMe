@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.dgut.member.entity">
+	<class name="Activity" table="lo_activity">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write"/>
+		<id name="id" type="java.lang.Integer" column="id"><generator class="identity"/></id>
+		<property name="activityName" column="activity_name" type="string" length="100" not-null="true"/>
+		<property name="activityAddress" column="activity_address" type="string" length="100" not-null="true" />
+		<property name="completion_time" column="completion_time" type="integer" length="11" not-null="true" />
+		<property name="register_time" column="register_time" type="timestamp" not-null="true" />
+		<property name="lastUpdateTime" column="last_update_time" type="timestamp" not-null="true" />
+		<property name="activityContent" column="activity_content" type="text" not-null="true"></property>
+		<many-to-one name="admin" column="user_id" cascade="save-update" class="com.dgut.main.entity.Admin" not-null="true"/>
+	</class>
+</hibernate-mapping>
